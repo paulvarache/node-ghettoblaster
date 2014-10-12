@@ -1,0 +1,21 @@
+{
+  "name": "node-ghettoblaster",
+  "version": "0.0.1",
+  "description": "A Node.js music player. It uses mplayer in slave mode and send controls via the stdin.",
+  "main": "./node-ghettoblaster.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paulvarache/node-ghettoblaster.git"
+  },
+  "keywords": [
+
+  ],
+  "author": {
+    "name": "Paul Varache"
+  },
+  "bugs": {
+    "url": "https://github.com/paulvarache/node-ghettoblaster/issues"
+  },
+  "homepage": "https://github.com/paulvarache/node-ghettoblaster",
+  "readme": "README.md"
+}
