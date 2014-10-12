@@ -38,8 +38,17 @@ GBlatser.prototype.play = function(opts) {
         this.emit('error');
     }).bind(this));
 
+    var started = false;
+
     this.childProc.stdout.on('data', (function (data) {
-        if (data.toString() === "\n") this.emit("ended")
+        if (data.toString().indexOf("Starting playback...") !== -1) {
+            started = true;
+            return;
+        }
+        if (data.toString() === "\n" && started) {
+            this.emit('ended');
+            started = false;
+        }
     }).bind(this));
 
     this.childProc.on('exit', (function(code, sig){
@@ -50,6 +59,7 @@ GBlatser.prototype.play = function(opts) {
         input: this.childProc.stdout,
         output: this.childProc.stdin
     });
+    this.playing = true;
 };
 
 GBlatser.prototype.write = function (cmd) {
